@@ -7,7 +7,7 @@ var script = document.createElement('script');
 script.src = 'https://cdn.rawgit.com/auduno/clmtrackr/dev/build/clmtrackr.min.js';
 
 script.onload = function(){
-  var videoinput = document.getElementsByTagName("video")[0];
+  var videoInput = document.getElementsByTagName("video")[0];
   var ctracker = new clm.tracker();
   ctracker.init();
   ctracker.start(videoInput);
