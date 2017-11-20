@@ -4,34 +4,21 @@
 // ----- 
 
 var script = document.createElement('script');
-script.src = 'https://cdn.rawgit.com/auduno/clmtrackr/dev/build/clmtrackr.min.js';
-
-var lastpos = false;
+script.src = 'https://cdn.rawgit.com/jaysalvat/jquery.facedetection/a3e52bd0/dist/jquery.facedetection.min.js';
 
 script.onload = function(){
-  console.log("Initialising ct tracker");
-  var videoInput = document.getElementsByTagName("video")[0];
-  var ctracker = new clm.tracker();
-  ctracker.init();
-  ctracker.start(videoInput);
-  function updatePositions(pos){
-  if (lastpos != pos) {
-     if (!pos){
-       console.log("No face detected")
-    } else {
-       console.log("face detected")
-       console.log(pos)   
-    }
+  var el = $('.OT_video-element').first();
+  loop();
+  function loop(){
+    el.faceDetection({
+        complete: function (faces) {
+            console.log(faces);
+            // find the wider face
+	    // find the x position of its center
+	    // difference with the center of the camera (can find from el)
+            loop(); // timeout unnecessary as it takes some time...
+        }
+    });
   }
-  lastpos = pos;
-    // should update the turn
- }
-  function positionLoop() {
-    var positions = ctracker.getCurrentPosition();
-    updatePositions(positions);
-    requestAnimationFrame(positionLoop);
-  }
-  requestAnimationFrame(positionLoop);
-  positionLoop();
 }
 document.head.appendChild(script); //inject where you need it to be
