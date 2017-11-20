@@ -1,5 +1,5 @@
 // insert with 
-
+$("head").append('<script src="https://rawgit.com/mdaquin/doublefacetracket/master/trctrl.js" type="text/javascript"></script>');
 
 // ----- 
 
