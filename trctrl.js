@@ -29,7 +29,6 @@ script.onload = function(){
   function positionLoop() {
     var positions = ctracker.getCurrentPosition();
     updatePositions(positions);
-    console.log(positions)
     requestAnimationFrame(positionLoop);
   }
   requestAnimationFrame(positionLoop);
