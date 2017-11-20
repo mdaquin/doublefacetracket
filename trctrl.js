@@ -12,17 +12,16 @@ script.onload = function(){
   var ctracker = new clm.tracker();
   ctracker.init();
   ctracker.start(videoInput);
-  requestAnimationFrame(positionLoop);
-  positionLoop();
-}
-document.head.appendChild(script); //inject where you need it to be
-
-function positionLoop() {
+  function positionLoop() {
     var positions = ctracker.getCurrentPosition();
     console.log(positions);
     updatePosition(positions);
     requestAnimationFrame(positionLoop);
+  }
+  requestAnimationFrame(positionLoop);
+  positionLoop();
 }
+document.head.appendChild(script); //inject where you need it to be
 
 var lastpos = false;
 
